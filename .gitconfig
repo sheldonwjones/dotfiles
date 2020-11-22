@@ -1,0 +1,8 @@
+[user]
+	email = sheldonwjones@gmail.com
+	name = Sheldon Jones
+
+[tig "color"]
+	cursor = yellow black bold
+	title-blur = cyan black
+	title-focus = green black bold

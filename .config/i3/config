@@ -1,0 +1,309 @@
+set $mod Mod4
+
+font pango:FiraCode Nerd Font Mono 10
+#font pango:VictorMono Nerd Font:style=Medium Oblique,Italic 12
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# control focused window when follows the mouse movements
+focus_follows_mouse no
+
+# window border settings
+default_border          normal
+default_floating_border none
+
+# hiding borders adjacent to the screen edges
+hide_edge_borders both
+
+# layout
+workspace_layout tabbed
+
+# set popups during fullscreen mode
+popup_during_fullscreen smart
+
+#exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+# dunst notifications
+exec_always --no-startup-id /usr/bin/dunst &
+
+# alt-tab
+#exec_always --no-startup-id ~/bin/alttab &
+
+# autotiling
+#exec_always --no-startup-id ~/bin/autotiling.py
+#exec_always --no-startup-id i3altlayout &
+
+exec_always --no-startup-id /usr/bin/picom -cb
+
+# hide the mouse when not in use
+#exec_always --no-startup-id xbanish &
+exec_always --no-startup-id mousetrap -t 2 &
+
+# enable media keys
+exec_always --no-startup-id xbindkeys &
+
+# nm-applet
+exec_always --no-startup-id nm-applet &
+
+# load keymap
+exec_always --no-startup-id xmodmap ~/.Xmodmap &
+
+#exec_always --no-startup-id feh --auto-zoom --bg-scale ~/src/i3-polybar-config/desktop.jpg &
+exec_always --no-startup-id feh --auto-zoom --bg-scale ~/Downloads/black-background-smoke-line-abstraction-4k_1539370178.jpg &
+
+# lock
+bindsym $mod+z exec i3lock -f -c 000000 -i ~/Downloads/yoda.png &
+exec --no-startup-id /usr/bin/xautolock -time 30 -locker "i3lock -f -c 000000 -i ~/Downloads/yoda.png" &
+
+# screenshot
+bindsym --release Print exec --no-startup-id "maim -s ~/screenshot_from_$(date +%Y-%m-%d_%H-%M-%S).png"
+#bindsym --release Shift+Print exec --no-startup-id scrot -s
+
+# start a terminal
+#bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec alacritty
+bindsym $mod+Shift+Return exec kitty
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start dmenu (a program launcher)
+# bindsym $mod+d exec dmenu_run
+
+# fzf dmenu
+bindsym $mod+p exec --no-startup-id alacritty -d 80 20 -t 'fzf-menu' -e 'i3-dmenu-desktop' --dmenu=fzf
+
+# fzf clipboard manager
+#bindsym $mod+c exec --no-startup-id alacritty -d 80 20 -t 'clipboard-history' -e ~/bin/cb
+
+# floating windows
+for_window [title="clipboard-history"] floating enable
+for_window [title="fzf-menu"] floating enable
+for_window [class="(?i)pidgin"] floating enable
+for_window [title="FINCH"] floating enable
+for_window [title="Screen Layout Editor"] floating enable
+for_window [title="Volume Control"] floating enable
+for_window [title="Zoom -"] floating enable
+
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+# Scratchpad
+bindsym $mod+y scratchpad show
+bindsym $mod+Shift+y floating enable, move scratchpad
+
+# swap
+#bindsym $mod+x swap container with mark x, unmark x
+#bindsym $mod+Control+x move window to mark x, unmark x
+#bindsym $mod+Shift+x mark --toggle x
+
+#bindsym $mod+x swap container with mark X
+#bindsym $mod+x mode "default",
+#  exec i3-input \
+#    -P '(swap container with mark): ' \
+#    -F 'swap container with mark %s'
+
+# marks
+# read 1 character and mark the current window with this character
+bindsym $mod+m exec i3-input -F 'mark %s' -l 1 -P 'Mark: '
+
+# read 1 character and go to the window with the character
+bindsym $mod+g exec i3-input -F '[con_mark="%s"] focus' -l 1 -P 'Goto: '
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+i split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+t layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+bindsym $mod+d focus child
+
+# switch to workspace
+# switch between the current and the previously focused one
+bindsym $mod+b workspace back_and_forth
+bindsym $mod+Shift+b move container to workspace back_and_forth
+
+#bindsym $mod+1 workspace 1:<span foreground="red">vim</span>
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+bindsym $mod+Escape workspace next_on_output
+
+bindsym $mod+Tab workspace back_and_forth
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym l resize shrink width 5 px or 5 ppt
+        bindsym k resize grow height 5 px or 5 ppt
+        bindsym j resize shrink height 5 px or 5 ppt
+        bindsym h resize grow width 5 px or 5 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Down resize grow height 5 px or 5 ppt
+        bindsym Up resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# nudge window (you can also use the mouse for that)
+mode "nudge" {
+        bindsym l move right
+        bindsym k move up
+        bindsym j move down
+        bindsym h move left
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+n mode "nudge"
+
+#for_window [class="^Pidgin$" window_role="^conversation$"] floating enable
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+#bar {
+#        status_command i3status
+#}
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+client.background       #ffffff
+
+# Gaps
+gaps inner 8
+gaps outer 6
+
+# Only enable gaps on a workspace when there is at least one container
+smart_gaps on
+
+# Only enable outer gaps when there is exactly one container
+smart_gaps inverse_outer
+
+# Hide edge borders only if there is one window with no gaps
+hide_edge_borders smart_no_gaps
+
+bindsym $mod+Mod1+plus      gaps inner current plus 2
+bindsym $mod+Mod1+minus     gaps inner current minus 2
+
+bindsym $mod+plus           gaps outer current plus 2
+bindsym $mod+minus          gaps outer current minus 2
+
+bindsym $mod+shift+plus     gaps inner current set 6; gaps outer current set 6
+bindsym $mod+shift+minus    gaps inner current set 0; gaps outer current set 0
+
+# start i3bar to display a workspace bar
+bar {
+    status_command          ~/src/i3blocks/i3blocks
+    #output                  primary
+    tray_output             primary
+    mode                    dock
+    position                top
+    #height                  30
+    workspace_buttons       yes
+    bindsym button4         nop
+    bindsym button5         nop
+    separator_symbol        "❯"
+    font pango:FiraCode Nerd Font Mono 10
+    #font pango:VictorMono Nerd Font:style=Medium Oblique,Italic 12
+
+    colors {
+        background  #212121
+        statusline  #dddddd
+        separator   #666666
+        # class             border  backgr. text
+        focused_workspace   #2b83a6 #2b83a6 #ffffff
+        active_workspace    #212121 #212121 #ffffff
+        inactive_workspace  #212121 #212121 #86888c
+        urgent_workspace    #d64e4e #d64e4e #ffffff
+        binding_mode        #229c56 #229c56 #ffffff
+    }
+}
