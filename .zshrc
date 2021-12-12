@@ -76,7 +76,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker z)
+plugins=(git git-prompt docker)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -135,7 +135,8 @@ alias vim=v
 alias vimdiff=nvim -d
 alias ip='ip -c'
 
-export BAT_THEME="TwoDark"
+#export BAT_THEME="TwoDark"
+export BAT_THEME="Coldark-Dark"
 export FZF_DEFAULT_OPTS='--height 80% --layout=reverse --border'
 export FZF_COMPLETION_OPTS="--preview '(bat --color=always {} || cat {} || tree -C {}) 2> /dev/null | head -200'"
 export FZF_CTRL_T_OPTS="$FZF_COMPLETION_OPTS"
@@ -161,7 +162,6 @@ fi
 export NVM_DIR=$(realpath "$HOME/.nvm")
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
