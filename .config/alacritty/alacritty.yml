@@ -25,7 +25,7 @@ font:
   size: 14
   normal:
     family: Victor Mono Nerd Font
-    style: Light
+    #style: Light
 
 draw_bold_text_with_bright_colors: true
 
@@ -64,11 +64,11 @@ mouse:
 
   hide_when_typing: true
 
-  url:
-    launcher:
-      program: xdg-open
-
-    modifiers: None
+  #url:
+  #  launcher:
+  #    program: xdg-open
+  #
+  #  modifiers: None
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
