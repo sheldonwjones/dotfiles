@@ -1,9 +1,9 @@
 scriptencoding utf-8 " use utf-8 encoding
 set nocompatible     " disable compatibility with old vi
-set shell=/usr/bin/zsh
+"set shell=/usr/bin/zsh
 
-let g:python_host_prog = $PYTHON_HOST_PROG
-let g:python3_host_prog = $PYTHON3_HOST_PROG
+"let g:python_host_prog = $PYTHON_HOST_PROG
+"let g:python3_host_prog = $PYTHON3_HOST_PROG
 " ============================================================================ "
 " ===                               PLUGINS                                === "
 " ============================================================================ "
@@ -22,6 +22,11 @@ if !filereadable(plugpath)
         exit
     endif
 endif
+
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
 
 call plug#begin('~/.config/nvim/plugged')
 
@@ -59,12 +64,12 @@ Plug 'farmergreg/vim-lastplace'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+"Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'jparise/vim-graphql'
 
 "languages
 Plug 'sheerun/vim-polyglot'
-Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.sh' }
+"Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.sh' }
 Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for' :['python', 'vim-plug'] }
 Plug 'psf/black', {
   \ 'for': ['python'] }
