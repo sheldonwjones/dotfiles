@@ -1,8 +1,30 @@
 [user]
-	email = sheldonwjones@gmail.com
-	name = Sheldon Jones
+  email = sheldonwjones@gmail.com
+  name = Sheldon Jones
 
 [tig "color"]
-	cursor = yellow black bold
-	title-blur = cyan black
-	title-focus = green black bold
+  cursor = yellow black bold
+  title-blur = cyan black
+  title-focus = green black bold
+
+[pull]
+  rebase = false
+
+[diff]
+  compactionHeuristic = true
+  algorithm = histogram
+  colorMoved = default
+
+[pager]
+  diff = "delta"
+  show = "delta"
+  reflog = "delta"
+  show = "delta"
+
+[delta]
+  navigate = true
+  side-by-side = true
+  line-numbers = true
+
+[interactive]
+  diffFilter = delta --color-only
