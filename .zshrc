@@ -76,17 +76,11 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-prompt docker)
+plugins=(git git-prompt docker zsh-autosuggestions sudo)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
-#export http_proxy=http://wwwproxy.sandia.gov:80/
-#export https_proxy=http://wwwproxy.sandia.gov:80/
-#export ftp_proxy=http://wwwproxy.sandia.gov:80/
-#export rsync_proxy=http://wwwproxy.sandia.gov:80/
-#export no_proxy=sandia.gov,.srn.sandia.gov,.sandia.gov,localhost
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
